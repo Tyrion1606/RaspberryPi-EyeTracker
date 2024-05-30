@@ -26,8 +26,7 @@ while True:
         text = "Looking center"
 
     if(old_text != text):
-        print('old_text: ' + old_text)
-        print('text: ' + text)
+        print(text)
         old_text = text
 
     cv2.putText(frame, text, (90, 60), cv2.FONT_HERSHEY_DUPLEX, 1.6, (147, 58, 31), 2)
