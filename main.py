@@ -32,6 +32,8 @@ while True:
 
     cv2.imshow("Demo", frame)
 
+    print(text)
+
     if cv2.waitKey(1) == 27:
         break
    
