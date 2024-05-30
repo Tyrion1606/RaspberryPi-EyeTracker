@@ -12,7 +12,8 @@ while True:
     gaze.refresh(frame)
 
     frame = gaze.annotated_frame()
-    text = ""
+    text = "None"
+    old_text = "None"
 
     if gaze.is_blinking():
         text = "Blinking"
@@ -23,6 +24,10 @@ while True:
     elif gaze.is_center():
         text = "Looking center"
 
+    if(old_text != text):
+        print(text)
+        old_text = text
+
     cv2.putText(frame, text, (90, 60), cv2.FONT_HERSHEY_DUPLEX, 1.6, (147, 58, 31), 2)
 
     left_pupil = gaze.pupil_left_coords()
@@ -31,8 +36,6 @@ while True:
     cv2.putText(frame, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
 
     cv2.imshow("Demo", frame)
-
-    print(text)
 
     if cv2.waitKey(1) == 27:
         break
