@@ -4,6 +4,8 @@ from gaze_tracking import GazeTracking
 gaze = GazeTracking()
 webcam = cv2.VideoCapture(0)
 
+text = "None"
+old_text = "None"
 while True:
     # get new frame from webcam
     _, frame = webcam.read()
@@ -12,8 +14,7 @@ while True:
     gaze.refresh(frame)
 
     frame = gaze.annotated_frame()
-    text = "None"
-    old_text = "None"
+
 
     if gaze.is_blinking():
         text = "Blinking"
